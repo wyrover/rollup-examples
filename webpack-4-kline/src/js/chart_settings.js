@@ -58,7 +58,8 @@ export class ChartSettings {
       'WR',
       'ROC',
       'MTM',
-      'PSY'
+      'PSY',
+      'StochRSI2'
     ]
     for (let i = 0; i < _name.length; i++) {
       let _value = ChartManager.instance.createIndicatorAndRange(

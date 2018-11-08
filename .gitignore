@@ -60,3 +60,4 @@ typings/
 # next.js build output
 .next
 /rollup-es2015/dist
+/webpack-4-kline/dist

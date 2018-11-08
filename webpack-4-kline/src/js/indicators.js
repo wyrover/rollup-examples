@@ -1152,3 +1152,81 @@ export class STOCHRSIIndicator extends Indicator {
     return 'StochRSI'
   }
 }
+
+export class STOCHRS2IIndicator extends Indicator {
+  constructor() {
+    super()
+
+    let N = new exprs.ParameterExpr('N', 3, 100, 14)
+    let M = new exprs.ParameterExpr('M', 3, 100, 14)
+    let P1 = new exprs.ParameterExpr('P1', 2, 50, 3)
+    let P2 = new exprs.ParameterExpr('P2', 2, 50, 3)
+    this.addParameter(N)
+    this.addParameter(M)
+    this.addParameter(P1)
+    this.addParameter(P2)
+    let LC = new exprs.AssignExpr(
+      'LC',
+      new exprs.RefExpr(new exprs.CloseExpr(), new exprs.ConstExpr(1))
+    )
+    this.addAssign(LC)
+    let CLOSE_LC = new exprs.AssignExpr(
+      'CLOSE_LC',
+      new exprs.SubExpr(new exprs.CloseExpr(), LC)
+    )
+    this.addAssign(CLOSE_LC)
+    let RSI = new exprs.AssignExpr(
+      'RSI',
+      new exprs.MulExpr(
+        new exprs.DivExpr(
+          new exprs.SmaExpr(
+            new exprs.MaxExpr(CLOSE_LC, new exprs.ConstExpr(0)),
+            N,
+            new exprs.ConstExpr(1)
+          ),
+          new exprs.SmaExpr(
+            new exprs.AbsExpr(CLOSE_LC),
+            N,
+            new exprs.ConstExpr(1)
+          )
+        ),
+        new exprs.ConstExpr(100)
+      )
+    )
+    this.addAssign(RSI)
+    let STOCHRSI = new exprs.OutputExpr(
+      'STOCHRSI2',
+      new exprs.MulExpr(
+        new exprs.DivExpr(
+          new exprs.MaExpr(
+            new exprs.SubExpr(RSI, new exprs.LlvExpr(RSI, M)),
+            P1
+          ),
+          new exprs.MaExpr(
+            new exprs.SubExpr(
+              new exprs.HhvExpr(RSI, M),
+              new exprs.LlvExpr(RSI, M)
+            ),
+            P1
+          )
+        ),
+        new exprs.ConstExpr(100)
+      )
+    )
+    this.addOutput(STOCHRSI)
+    this.addOutput(
+      new exprs.RangeOutputExpr('MA', new exprs.MaExpr(STOCHRSI, P2))
+    )
+
+    this.addOutput(
+      new exprs.RangeOutputExpr(
+        'TEST',
+        new exprs.MaExpr(STOCHRSI, new exprs.ParameterExpr('P333', 2, 50, 9))
+      )
+    )
+  }
+
+  getName = function() {
+    return '指标名称'
+  }
+}

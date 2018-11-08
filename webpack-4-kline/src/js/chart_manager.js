@@ -970,6 +970,10 @@ export class ChartManager {
         indic = new indicators.STOCHRSIIndicator()
         range = new ranges.PercentageRange(areaName)
         break
+      case 'StochRSI2':
+        indic = new indicators.STOCHRS2IIndicator()
+        range = new ranges.PercentageRange(areaName)
+        break
       default:
         return null
     }
