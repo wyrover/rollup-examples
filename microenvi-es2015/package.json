@@ -1,0 +1,19 @@
+{
+  "name": "microenvi-es2015",
+  "version": "1.0.0",
+  "description": "",
+  "main": "public/static/bundle.js",
+  "scripts": {
+    "dev": "microenvi"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "preact": "^8.3.1"
+  },
+  "devDependencies": {
+    "microenvi": "^0.2.0"
+  }
+}

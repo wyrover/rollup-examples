@@ -1,0 +1,15 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true,
+    "commonjs": true,
+    "node": true,
+    "jquery": true
+  },
+  "extends": ["eslint:recommended", "plugin:import/errors"],
+  "rules": { "no-console": "off" },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  }
+}

@@ -16,15 +16,16 @@
     "eslint-plugin-import": "^2.8.0",
     "rollup": "^0.67.0",
     "rollup-plugin-buble": "^0.19.4",
-    "rollup-plugin-serve": "^0.4.2",
-    "rollup-plugin-uglify": "^4.0.0",
-    "rollup-pluginutils": "^2.3.3",
     "rollup-plugin-commonjs": "^8.2.6",
-    "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-filesize": "^1.5.0",
     "rollup-plugin-livereload": "^0.6.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-nodent": "^0.2.2",
     "rollup-plugin-replace": "^2.0.0",
-    "rollup-plugin-scss": "^0.4.0"
+    "rollup-plugin-scss": "^0.4.0",
+    "rollup-plugin-serve": "^0.4.2",
+    "rollup-plugin-uglify": "^4.0.0",
+    "rollup-pluginutils": "^2.3.3"
   },
   "dependencies": {
     "jquery": "^3.3.1"
